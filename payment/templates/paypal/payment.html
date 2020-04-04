@@ -1,0 +1,78 @@
+{%extends 'blogs/layout.html'%}
+{%load cart_item_count%}
+{%block content%}
+<style type="text/css">
+   .img_style{
+    height: 200px;
+    width: 170px;
+    object-fit: cover;
+  }
+</style>
+
+<main>
+  <div class="col-md-8 center-content pt-4 mb-10">
+    <div class="col-md-12 container order_summary_tag ">
+      <div class="table-responsive text-nowrap">
+  <h2 class="text-primary">Payment Summary</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Number</th>
+        <th scope="col">Item name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total item price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for order_item in order.items.all %}
+      <tr>
+        <th scope="col">{{forloop.counter}}</th>
+        <td>
+        <img class="img_style" src="{{order_item.item.image.url}}">  
+        </td>
+        <td><h5 class="bold">{{order_item.item.title}}</h5></td>
+        {% if order_item.item.discount_price%}
+        <td>${{order_item.item.discount_price}}</td>
+        {%else%}
+        <td>${{order_item.item.price}}</td>
+        {%endif%}
+        <td>
+          {{order_item.quantity}} 
+        </td>
+        <td>
+          {% if order_item.item.discount_price%}
+          ${{order_item.get_item_total_discount_price}}
+          <span class="badge badge-primary">Saved ${{order_item.get_amount_saved}}</span>
+          {%else%}
+          ${{order_item.get_item_total_price}}
+          {%endif%}
+
+        </td>
+      </tr>
+      {%endfor%}
+      {%if order.items.all%}
+      <tr>
+        <td colspan="5"><b>Order Total</b></td>
+       <td><b>${{order.get_total}}</b></td>
+      </tr>
+      <tr>
+        <td colspan="5"><b>Order Total and shipping</b></td>
+       <td><b>${{order.get_total_and_shipping}}</b></td>
+      </tr>
+     {%endif%}
+      <hr>
+    </tbody>
+  </table>
+<div class="float-right mr-4 mb-10">
+    {{ form.render }}
+</div>
+</div>
+
+    </div>
+
+</fieldset>
+</div>
+</main>
+{%endblock%}

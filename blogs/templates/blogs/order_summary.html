@@ -1,0 +1,101 @@
+{%extends 'blogs/layout.html'%}
+{%block content%}
+<style type="text/css">
+  .img_style{
+    height: 200px;
+    width: auto;
+    position: center;
+    object-fit: cover;
+  }
+</style>
+<main>
+    <div class="col-md-12 container order_summary_tag content-section pt-2">
+      <div class="table-responsive text-nowrap">
+  <h2 class="text-primary">Order Summary</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Item</th>
+        <th scope="col">Item name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total item price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for order_item in object.items.all %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>
+        <img class="img_style" src="{{order_item.item.image.url}}">  
+        </td>
+        <td><h5 class="bold">{{order_item.item.title}}</h5></td>
+        {% if order_item.item.discount_price%}
+        <td>${{order_item.item.discount_price}}</td>
+        {%else%}
+        <td>${{order_item.item.price}}</td>
+        {%endif%}
+        <td>
+          <a href="{% url 'blogs:remove_single_item_from_cart' order_item.item.slug %}" >
+            <i class="fas fa-minus mr-2"></i></a>
+          {{order_item.quantity}} 
+          <a href="{% url 'blogs:add_to_cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+        </td>
+        <td>
+          {% if order_item.item.discount_price%}
+          ${{order_item.get_item_total_discount_price}}
+          <span class="badge badge-primary">Saved ${{order_item.get_amount_saved}}</span>
+          {%else%}
+          ${{order_item.get_item_total_price}}
+          {%endif%}
+            <a style="color:red;" href="{% url 'blogs:remove_from_cart' order_item.item.slug %}" ><i class="fas fa-trash-alt float-right"></i>
+            </a>
+
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">Oops no items in your cart</td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <a class="btn btn-primary float-right" href="/">continue shopping</a>
+        </td>
+      </tr>
+      {%endfor%}
+      {%if object.get_total%}
+      <tr>
+        <td colspan="5"><b>Order Total</b></td>
+       <td><b>${{object.get_total}}</b></td>
+      </tr>
+      {%endif%}
+      {%if object.get_shipping%}
+       <tr>
+        <td colspan="5"><b>shipping cost</b></td>
+       <td><b>${{object.get_shipping}}</b></td>
+      </tr>
+      {%endif%}
+      
+      {%if object.get_total_and_shipping%}
+       <tr>
+        <td colspan="5"><b>Order Total  and shipping</b></td>
+       <td><b>${{object.get_total_and_shipping}}</b></td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <a class="btn btn-warning float-right ml-2" href="{% url 'blogs:checkout'%}">Make Payments</a>
+          <a class="btn btn-primary float-right" href="/">continue shopping</a>
+        </td>
+      </tr>
+      {%endif%}
+      <hr>
+    </tbody>
+  </table>
+
+</div>
+
+    </div>
+</main>
+{%endblock content%}
+

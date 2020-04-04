@@ -1,0 +1,22 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static "blogs/main.js" %}">
+</head>
+<script id="5b922235-75e9-4221-9bd1-20069a8ba9c6_template" type="text/template">
+      
+</script>
+  <script nonce="">  var doc = document.getElementById("5b922235-75e9-4221-9bd1-20069a8ba9c6").contentWindow.document;
+  var template = document.getElementById("5b922235-75e9-4221-9bd1-20069a8ba9c6_template").innerHTML;
+
+  function htmlDecode(input){
+    var e = document.createElement('div');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
+  doc.open();
+  doc.write(htmlDecode(template));
+  doc.close();
+</script>
+
+</script>
+{%block content%}
+{%endblock content%}

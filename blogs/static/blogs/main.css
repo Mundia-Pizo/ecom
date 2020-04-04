@@ -1,0 +1,167 @@
+
+body {
+  background: #ffffff;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+.drop_down{
+  background-color: #e0e0e0;
+}
+.login_style{
+  width: 400px;
+}
+.title_style{
+  color: #B71C1C;
+}
+.no_results{
+  height: 500px;
+  width: 800px;
+  background-color:#ffffff;
+
+}
+.bg-steel {
+  background-color: #00838f; /*5f788a*/
+}
+.bg-footer{
+  background-color: #78909C;
+}
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+.product-style{
+  width: 200px;
+  height:200px;
+  padding-bottom: 10;
+}
+.product-space{
+  padding-bottom: 10px;
+}
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+.navsize{
+  height: 90px;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+.navbar-size {
+  height: 50px;
+}
+
+.content-section {
+  background:#ffffff;
+  padding: 20px 40px;
+  /*border: 1px solid #dddddd;
+  border-radius: 3px;*/
+  margin-bottom: 20px;
+  /*margin-left: 40px;*/
+  margin-right: 40px;
+  margin-top:40px
+}
+.payment-section {
+  background:#cfd8dc;
+  padding: 20px 40px;
+  /*border: 1px solid #dddddd;
+  border-radius: 3px;*/
+  margin-bottom: 20px;
+  /*margin-left: 40px;*/
+  margin-right: 40px;
+  margin-top:30px
+}
+.order_summary_tag{
+  width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.message-tag{
+  padding: 20px 40px;
+  margin-right:40px;
+}
+.center-content{
+  margin-right:auto;
+  margin-left:auto;
+}
+
+/*This part is for the cards in the categories*/
+.card-section{
+  background: #f5f5f5;
+  padding:40px 40px;
+  margin-bottom:10px;
+  margin-right:16px;
+  margin-left: 16px; 
+  width: 200px;
+  height: 250px;
+}
+/*this is where it ends */
+.article-title {
+  color: #444444;
+}
+.bottom-tag{
+  margin-left: 40px;
+}
+.home-tag{
+  margin-left: 60px;
+}
+.auth-tag{
+  width: 600px;
+  margin-left:auto;
+  margin-right: auto;
+
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+.about-tag{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+.footer-links-brand{
+  color: #000000;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}

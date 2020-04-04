@@ -1,0 +1,96 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>    
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Tulio-ecom</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{%static 'blogs/css/bootstrap.min.css'%}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{%static 'blogs/css/mdb.min.css'%}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{%static 'blogs/css/style.min.css'%}" rel="stylesheet">
+
+    <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+  </style>
+
+<link rel="stylesheet" type="text/css" href="{% static "blogs/main.css" %}">
+
+	{% if title%}
+	<title>blog {{title}} </title>
+	{%else %}
+	<title>Blogs</title>
+	{%endif%}
+
+</head>
+<body>
+
+<header class="site-header">
+
+  <!-- Navbar -->
+  {%include 'blogs/nav.html'%}
+  
+<main role="main" class=".container "> 
+	<div class="row">
+		<div class="col-md center-content">
+      {% if messages %}
+      {% for message in messages%}
+      <div class="alert alert-{{message.tags}} mt-3">{{message}}</div>
+      {% endfor%}
+      {% endif%}
+			{% block content%} {% endblock%}
+		</div>
+	</div>
+</main>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+     <script type="text/javascript" src="{%static "blogs/js/jquery-3.4.1.min.js"%}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{%static "blogs/js/popper.min.js"%}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{%static "blogs/js/bootstrap.min.js" %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static "blogs/js/mdb.min.js" %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+
+
+</body>
+</html>
