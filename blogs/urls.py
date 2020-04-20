@@ -11,7 +11,9 @@ from .views import (products,
 	 CategoryView, 
 	 SearchView,
 	 DashboardView,
-	 ItemAploadView
+	 ItemAploadView,
+	 ItemDeleteView,
+	 ItemUpdateView
 
 	  )
 
@@ -30,6 +32,8 @@ urlpatterns = [
 	                                name="remove_single_item_from_cart"),
 	path('category/', CategoryView.as_view(), name = "category" ),
 	path('dashboard/', DashboardView.as_view(), name='dashboard'),
-	path('appload/', ItemAploadView.as_view(), name='appload')
+	path('appload/', ItemAploadView.as_view(), name='appload'),
+	path('products/<slug>/delete',ItemDeleteView.as_view(), name = "delete" ),
+	path('products/<slug>/update',ItemUpdateView.as_view(), name = "update" ),
 
 ]

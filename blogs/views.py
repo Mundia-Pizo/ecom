@@ -15,7 +15,7 @@ from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .blog_forms import CheckoutForm
 from django.shortcuts import redirect
 from itertools import chain
@@ -300,10 +300,31 @@ class ItemAploadView(LoginRequiredMixin, CreateView):
 		form.instance.owner=self.request.user
 		return super().form_valid(form)
 
-class ItemDeleteView(LoginRequiredMixin, DeleteView):
-	pass
+class ItemDeleteView(UserPassesTestMixin,LoginRequiredMixin, DeleteView):
+	model = Item
+	template_name="blogs/delete.html"
+	success_url='/'
 
-class ItemUpdateView(LoginRequiredMixin, UpdateView):
-	pass
+	def test_func(self):
+		item = self.get_object()
+		if self.request.user == item.owner:
+			return True
+		return False
+
+class ItemUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
+	model = Item
+	fields =['title', 'price', 'discount_price', 'description']
+	template_name = 'blogs/itemUpdate.html'
+
+	def form_valid(self, form):
+		form.instance.owner = self.request.user
+		return super().form_valid(form)
+
+
+	def test_func(self):
+		item = self.get_object()
+		if self.request.user ==item.owner:
+			return True
+		return False
 
 	

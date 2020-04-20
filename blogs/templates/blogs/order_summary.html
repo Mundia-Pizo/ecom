@@ -30,7 +30,12 @@
         <td>
         <img class="img_style card" src="{{order_item.item.image.url}}">  
         </td>
-        <td><h5 class="bold">{{order_item.item.title}}</h5></td>
+        <td>
+          <div class="col">
+              <h5 class="bold">Product: {{order_item.item.title}}</h5>
+              <h7 class="bold">Supplier: {{order_item.item.owner}}</h7>
+          </div> 
+        </td>
         {% if order_item.item.discount_price%}
         <td>${{order_item.item.discount_price}}</td>
         {%else%}

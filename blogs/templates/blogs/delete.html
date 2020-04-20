@@ -1,0 +1,33 @@
+{% extends 'blogs/layout.html'%}
+{%block content%}
+{% load crispy_forms_tags%}
+<style type="text/css">
+  .center-card{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    align-content: center;
+  }
+</style>
+     <div class="center-card content-section col-md-8">
+        <form method="POST">
+          {%csrf_token%}
+        <fieldset class="center-content form-width form-group">
+            <div class="class-2">
+                <legend>Delete Product</legend>
+                <img class="card mb-4 mt-4" src="{{item.image.url}}">
+                <h5>Deleting this item will permantly remove it from the database.</h5>
+                <h2>Do you still want to delete this product??</h2>
+              <div class="row ">
+                <div class="p-10">
+                  <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                </div>
+                <div class="ml-10 mr-10"> 
+                  <a class="btn btn-outline-success" href="{% url 'blogs:home'%}">Cancel</a>
+                </div>
+              </div>
+            </div>
+        </fieldset>
+        </form>
+    </div>
+{% endblock content%}

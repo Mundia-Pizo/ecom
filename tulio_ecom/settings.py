@@ -2,8 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')7u%6+ztb_@lzm347k%q)pxy^he_um8mm!22lfs!#dqu-5lj77'
+SECRET_KEY = os.environ.get('_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -133,8 +132,8 @@ EMAIL_HOST_USER = os.environ.get('Your email address variable')
 EMAIL_HOST_PASSWORD = os.environ.get('Your email password variable')
 ()
 """
-EMAIL_HOST_USER = 'stacypizom@gmail.com'
-EMAIL_HOST_PASSWORD = 'stacy14017725.'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 PAYPAL_RECEIVER_EMAIL='sb-z7smm532234@business.example.com'
 PAYPAL_TEST = True

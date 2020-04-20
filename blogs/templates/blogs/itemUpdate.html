@@ -1,0 +1,41 @@
+{% extends 'blogs/layout.html'%}
+{%block content%}
+{% load crispy_forms_tags%}
+<style type="text/css">
+  .center-card{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    align-content: center;
+  }
+</style>
+     <div class="center-card content-section col-md-8">
+        <form method="POST">
+          {%csrf_token%}
+        <fieldset class="form-group">
+            <div class="row">
+              <div class="col-md-4 ml-8 mr-8">
+                  <legend>Update Product</legend>
+                  <img class="card mb-4 mt-4" src="{{item.image.url}}">
+              </div>
+              <div class="col-md-6 ">
+                    <div class="p-4">
+                        <div class="mb-3">
+                              
+                              {{form|crispy}}
+                        </div>
+                        <div class="row ">
+                            <div class="p-10">
+                              <button class="btn btn-outline-danger" type="submit">Update</button>
+                            </div>
+                            <div class="ml-10 mr-10"> 
+                              <a class="btn btn-outline-success" href="{% url 'blogs:home'%}">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+          </div>
+        </fieldset>
+        </form>
+    </div>
+{% endblock content%}
