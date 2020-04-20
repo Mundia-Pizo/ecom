@@ -1,0 +1,71 @@
+{% extends 'blogs/layout.html'%}
+{%block content%}
+{% load crispy_forms_tags%}
+<style type="text/css">
+	.card7{
+		height: 170px;
+		width: auto;
+		object-fit: cover;
+		position:center;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+</style>
+<div class="row ml-4 mr-4">
+		{%include 'blogs/dashboard_side.html'%}
+	<!--this is where the user items will be displayed-->
+	<div class="col-md-8 row wow mt-4">
+		{% for item in items%}  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <!--Card-->
+	            <div class="card">
+	              <!--Card image-->
+		              <div class="overlay product-card">
+		                <a href="{{item.get_absolute_url}}">
+		                <img src="{{item.image.url}}" class="card7 img-fluid img-responsive"
+		                  alt="">
+		                </a>
+		              </div>
+	              <!--Card image-->
+
+	              <!--Card content-->
+	              <div class="card-body text-center">
+	                <!--Category & Title-->
+		                <a href="" class="grey-text">
+		                  <h5>{{item.get_category_display}}</h5>
+		                </a>
+		                <h5>
+		                  <strong>
+		                    <a class="dark-grey-text">{{item.title}}
+		                      <span class="badge badge-pill {{item.get_label_display}}-color">NEW</span>
+		                    </a>
+		                  </strong>
+		                </h5>
+
+		                <h4 class="font-weight-bold blue-text">
+		                  <strong>$
+			                   {% if item.discount_price %}
+				                  {{item.discount_price}}
+				                  {% else %}
+				                  {{item.price}}
+			                  {%endif%}
+		                   </strong>
+		                </h4>
+	              </div>
+              <!--Card content-->
+            </div>
+            <!--Card-->
+
+          </div>
+          {%empty%}
+          <div class="content-section">
+          	<h1>You do not have any products apploaded yet</h1>
+            <h3>You can add items <a href="{% url 'blogs:appload'%}">here</a>
+          </div>
+            
+          {%endfor%}
+	</div>
+</div>
+{% endblock %}

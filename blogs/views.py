@@ -2,7 +2,15 @@ from django.conf import settings
 from django.shortcuts import render, get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Item, OrderItem, Order, BillingAddress, Payment
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import (
+	ListView, 
+	DetailView, 
+	View, 
+	TemplateView,
+	CreateView,
+	DeleteView,
+	UpdateView
+	)
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
@@ -11,6 +19,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .blog_forms import CheckoutForm
 from django.shortcuts import redirect
 from itertools import chain
+from users.models import Profile
+from django.contrib.auth.models import User
+
 
 import stripe
 stripe.api_key = settings.STRIPE_SECRETE_KEY
@@ -123,7 +134,7 @@ class CheckoutView(LoginRequiredMixin, View):
  
 def products(request):
 	context={
-		'items':Item.objects.all()
+		'items':Item.objects.all().order_by('-date')
 	}
 	return render(request, 'blogs/product.html', context)
 
@@ -262,4 +273,37 @@ class CategoryView(ListView):
 	model         = Item
 	paginate_by   =20
 	template_name = 'blogs/category_view.html'
+	
+class DashboardView(LoginRequiredMixin, View):
+	def get(self,request, *args, **kwargs):
+		profile = Profile.objects.get(user=self.request.user)
+		items = Item.objects.filter(owner=self.request.user)
+		context={
+		'profile':profile,
+		'items':items
+		}
+
+		return render(request, 'blogs/dashboard.html', context)
+
+	def post(self, *args, **kwargs):
+		pass
+
+
+class ItemAploadView(LoginRequiredMixin, CreateView):
+	model = Item 
+	fields = ['title','price',
+				'category','label','image',
+					'description']
+	template_name= 'blogs/aplaoditem.html'
+
+	def form_valid(self, form):
+		form.instance.owner=self.request.user
+		return super().form_valid(form)
+
+class ItemDeleteView(LoginRequiredMixin, DeleteView):
+	pass
+
+class ItemUpdateView(LoginRequiredMixin, UpdateView):
+	pass
+
 	

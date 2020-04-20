@@ -21,14 +21,14 @@
                           <i class="fas fa-shopping-cart"></i>
                         <span class="clearfix d-none d-sm-inline-block"> Cart </span>
                       </a>
-                </li>
-        {%if request.user.is_authenticated%}
-            <a class="nav-item nav-link blue-text" href="{%url 'profile'%}">My Tulio</a>
-            <a class="nav-item nav-link blue-text" href="{%url 'logout' %}">Logout</a>
-        {%else%}
-            <a class="nav-item nav-link blue-text" href="{%url 'login' %}">Login</a>
-            <a class="nav-item nav-link blue-text" href="{%url 'register'%}">Register</a>
-        {%endif%}
+                  </li>
+                {%if request.user.is_authenticated%}
+                    <a class="nav-item nav-link blue-text" href="{%url 'blogs:dashboard'%}">My Tulio</a>
+                    <a class="nav-item nav-link blue-text" href="{%url 'logout' %}">Logout</a>
+                {%else%}
+                    <a class="nav-item nav-link blue-text" href="{%url 'login' %}">Login</a>
+                    <a class="nav-item nav-link blue-text" href="{%url 'register'%}">Register</a>
+                {%endif%}
             </div>
           </li>
         </ul>

@@ -1,0 +1,20 @@
+{% extends 'blogs/layout.html'%}
+{%block content%}
+{% load crispy_forms_tags%}
+<div class="row ml-4 mr-4">
+	{%include 'blogs/dashboard_side.html'%}
+	<!--this is where the user items will be displayed-->
+	<div class="col-md-8 row wow fade-in mt-4">
+		<div class="content-section auth-tag col-md-6">
+			 	<form method="POST" enctype="multipart/form-data">
+					{% csrf_token%}
+					<fieldset class="form-group">
+						<legend class="border-bottom mb-4">Add Item</legend>
+						{{form|crispy}}
+					</fieldset>
+				     <input class="btn btn-outline-success" type="submit" name="Add Item">
+			   </form>
+        </div>
+	</div>
+</div>
+{% endblock %}

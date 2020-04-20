@@ -11,10 +11,10 @@ from django.conf.urls.static import static
 
 """This is the main urls file for the whole website"""
 urlpatterns = [
+    path('', include('blogs.urls', namespace='blogs')),
     path('admin/', admin.site.urls),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('paypal_pay/', include('payment.urls', namespace='payment')),
-    path('', include('blogs.urls', namespace='blogs')),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'),

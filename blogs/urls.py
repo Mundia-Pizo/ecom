@@ -9,7 +9,9 @@ from .views import (products,
 	 remove_single_item_from_cart,
 	 # PaymentView,
 	 CategoryView, 
-	 SearchView
+	 SearchView,
+	 DashboardView,
+	 ItemAploadView
 
 	  )
 
@@ -27,5 +29,7 @@ urlpatterns = [
 	path('remove_single_item_from_cart/<slug>/',remove_single_item_from_cart,
 	                                name="remove_single_item_from_cart"),
 	path('category/', CategoryView.as_view(), name = "category" ),
+	path('dashboard/', DashboardView.as_view(), name='dashboard'),
+	path('appload/', ItemAploadView.as_view(), name='appload')
 
 ]

@@ -58,13 +58,15 @@ class Item(models.Model):
 	image           = models.ImageField(upload_to='product_pictures')
 	slug            = models.SlugField()
 	description     = models.TextField()
+	owner           = models.ForeignKey(User, on_delete=models.CASCADE)
+	date            = models.DateTimeField(auto_now_add=True)
 	objects         = ProductManager()
 
 	# thumbnail = ImageSpecField(
 	# 	source='image', processors=[ResizeToFit(200, 200)], format='PNG',options = {'quality': 200})
 
    ## overiding the model save method to save our images in the formt we want them to be
-	def save(self):
+	def save(self, *args, **kwargs):
 		super().save()
 
 		img = Image.open(self.image.path)
