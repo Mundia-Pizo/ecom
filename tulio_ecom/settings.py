@@ -27,6 +27,17 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'stripe',
     'imagekit',
+    'django.contrib.sites',
+
+   # this is the allauth apps requred
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #here are the providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -44,7 +55,7 @@ ROOT_URLCONF = 'tulio_ecom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,15 +143,19 @@ EMAIL_HOST_USER = os.environ.get('Your email address variable')
 EMAIL_HOST_PASSWORD = os.environ.get('Your email password variable')
 ()
 """
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = os.environ.get('_MY_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('_MY_EMAIL_PASS')
 
 PAYPAL_RECEIVER_EMAIL='sb-z7smm532234@business.example.com'
 PAYPAL_TEST = True
 
 AUTHENTICATION_BACKENDS = (
-    'users.backends.EmailBackend',)
+    'users.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 
+    )
 
+SITE_ID=1
 
 """Paypal testing email sb-vt5dm531103@personal.example.com"""
