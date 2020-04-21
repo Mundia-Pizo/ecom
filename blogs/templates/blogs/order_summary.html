@@ -50,7 +50,7 @@
         <td>
           {% if order_item.item.discount_price%}
           ${{order_item.get_item_total_discount_price}}
-          <span class="badge badge-primary">Saved ${{order_item.get_amount_saved}}</span>
+          <span class="badge badge-primary">Save ${{order_item.get_amount_saved}}</span>
           {%else%}
           ${{order_item.get_item_total_price}}
           {%endif%}
