@@ -139,6 +139,15 @@ class Order(models.Model):
 		for order_item in self.items.all():
 			total +=order_item.get_final_price()
 		return round(total,2)
+	def get_shipping_one_item(self):
+		shipping =0
+		if self.items.get_final_price()<=10:
+			shipping =order_item.get_final_price()*0.05
+		elif order_item.get_final_price()<=50:
+			shipping =order_item.get_final_price()*0.06
+
+		return round(shipping,2)
+
 	def get_shipping(self):
 		shipping=0
 		if self.get_total() <=10:

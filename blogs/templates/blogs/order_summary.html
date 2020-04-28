@@ -36,11 +36,13 @@
               <h7 class="bold">Supplier: {{order_item.item.owner}}</h7>
           </div> 
         </td>
-        {% if order_item.item.discount_price%}
-        <td>${{order_item.item.discount_price}}</td>
-        {%else%}
-        <td>${{order_item.item.price}}</td>
-        {%endif%}
+        <div class="col">
+            {% if order_item.item.discount_price%}
+            <td>${{order_item.item.discount_price}}</td>
+            {%else%}
+            <td>${{order_item.item.price}}</td>
+            {%endif%}
+        </div>
         <td>
           <a href="{% url 'blogs:remove_single_item_from_cart' order_item.item.slug %}" >
             <i class="fas fa-minus mr-2"></i></a>
