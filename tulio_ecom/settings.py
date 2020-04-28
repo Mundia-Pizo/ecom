@@ -130,7 +130,7 @@ CRISPY_TEMPLATE_PACK ='bootstrap4'
 
 LOGIN_REDIRECT_URL = reverse_lazy('blogs:home')
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'account_login'
 STRIPE_SECRETE_KEY='sk_test_GdsaNmn32m78GqGGajfDc7jg003Lz1TgPA'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

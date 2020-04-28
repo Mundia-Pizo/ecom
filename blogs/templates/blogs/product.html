@@ -63,10 +63,6 @@
                   Buy Now
                 </a>
             {%endif%}
-            {%if user == object.owner%}
-               <a class="btn btn-outline-danger" href="{%url 'blogs:delete' item.slug%}">Delete</a>
-               <a class="btn btn-outline-warning" href="{% url 'blogs:update' item.slug%}">Update</a>
-            {%endif%}
 
           </div>
           <!--Content-->

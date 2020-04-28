@@ -53,6 +53,10 @@
 			                  {%endif%}
 		                   </strong>
 		                </h4>
+		                <div class="row">
+		                	<a class="text-warning ml-4 mr-4" href="{%url 'blogs:delete' item.slug%}">Delete</a>
+                            <a class="text-primary" href="{% url 'blogs:update' item.slug%}">Update</a>
+		                </div>
 	              </div>
               <!--Card content-->
             </div>

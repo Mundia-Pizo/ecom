@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import reverse 
 from django_countries.fields import CountryField
 from PIL import Image
-from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFit
 from django.db.models import Q
 
 class ProductQuerySet(models.QuerySet):
