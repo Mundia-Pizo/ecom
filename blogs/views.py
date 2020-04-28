@@ -303,7 +303,7 @@ class ItemAploadView(LoginRequiredMixin, CreateView):
 class ItemDeleteView(UserPassesTestMixin,LoginRequiredMixin, DeleteView):
 	model = Item
 	template_name="blogs/delete.html"
-	success_url='/'
+	success_url='/dashboard'
 
 	def test_func(self):
 		item = self.get_object()

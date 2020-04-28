@@ -2,14 +2,11 @@
 {%block content%}
 {% load crispy_forms_tags%}
 <style type="text/css">
-	.card7{
-		height: 170px;
-		width: auto;
-		object-fit: cover;
-		position:center;
-		margin-right: auto;
-		margin-left: auto;
-	}
+	.img_style{
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+  }
 	
 </style>
 <div class="row ml-4 mr-4">
@@ -22,9 +19,9 @@
             <!--Card-->
 	            <div class="card">
 	              <!--Card image-->
-		              <div class="overlay product-card">
+		              <div class="overlay product-card m-auto">
 		                <a href="{{item.get_absolute_url}}">
-		                <img src="{{item.image.url}}" class="card7 img-fluid img-responsive"
+		                <img src="{{item.image.url}}" class="img_style img-fluid img-responsive"
 		                  alt="">
 		                </a>
 		              </div>
@@ -34,7 +31,7 @@
 	              <div class="card-body text-center">
 	                <!--Category & Title-->
 		                <a href="" class="grey-text">
-		                  <h5>{{item.get_category_display}}</h5>
+		                  <h8>{{item.get_category_display}}</h8>
 		                </a>
 		                <h5>
 		                  <strong>
@@ -53,9 +50,11 @@
 			                  {%endif%}
 		                   </strong>
 		                </h4>
-		                <div class="row">
-		                	<a class="text-warning ml-4 mr-4" href="{%url 'blogs:delete' item.slug%}">Delete</a>
-                            <a class="text-primary" href="{% url 'blogs:update' item.slug%}">Update</a>
+		                <div class="row m-auto">
+		                	<a class="text-primary ml-4 mr-2" href="{% url 'blogs:update' item.slug%}"><i class="fas fa-share-alt"></i></a>
+                            <a class="text-primary mr-2 ml-2" href="{% url 'blogs:update' item.slug%}"><i class="far fa-edit"></i></a>
+                            <a class="text-danger ml-2 mr-4" href="{%url 'blogs:delete' item.slug%}"><i class="fas fa-trash-alt float-right"></i></a>
+
 		                </div>
 	              </div>
               <!--Card content-->
