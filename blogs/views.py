@@ -142,6 +142,7 @@ class HomeView(ListView):
 	model = Item
 	paginate_by=20
 	template_name = "blogs/home.html"
+	ordering ='-date'
 
 class OrderSummaryView(LoginRequiredMixin,View):
 	def get(self, *args, **kwargs):
