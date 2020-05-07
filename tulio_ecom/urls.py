@@ -37,11 +37,6 @@ urlpatterns = [
     # this is the allauth urls
     path('accounts/', include('allauth.urls')),
 
-
-
-
-
-
 ]
 
 if settings.DEBUG:

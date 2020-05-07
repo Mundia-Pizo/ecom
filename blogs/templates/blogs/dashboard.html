@@ -1,6 +1,6 @@
-{% extends 'blogs/layout.html'%}
-{%block content%}
-{% load crispy_forms_tags%}
+{% extends 'blogs/layout.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
 <style type="text/css">
 	.img_style{
     height: 200px;
@@ -12,10 +12,10 @@
 	
 </style>
 <div class="row ml-4 mr-4">
-		{%include 'blogs/dashboard_side.html'%}
+		{% include 'blogs/dashboard_side.html' %}
 	<!--this is where the user items will be displayed-->
 	<div class="col-md-8 row mt-4">
-		{% for item in items%}  
+		{% for item in items %}  
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4">
             <!--Card-->
@@ -35,21 +35,22 @@
 		                <a href="" class="grey-text">
 		                  <h8>{{item.get_category_display}}</h8>
 		                </a>
-		                <h5>
+		                <br>
+		                <h7>
 		                  <strong>
 		                    <a class="dark-grey-text">{{item.title}}
 		                      <span class="badge badge-pill {{item.get_label_display}}-color">NEW</span>
 		                    </a>
 		                  </strong>
-		                </h5>
+		                </h7>
 
 		                <h4 class="font-weight-bold blue-text">
 		                  <strong>$
 			                   {% if item.discount_price %}
 				                  {{item.discount_price}}
-				                  {% else %}
+				               {% else %}
 				                  {{item.price}}
-			                  {%endif%}
+			                   {% endif %}
 		                   </strong>
 		                </h4>
 		                <div class="row m-auto">
@@ -64,10 +65,10 @@
             <!--Card-->
 
           </div>
-          {%empty%}
+          {% empty %}
           <div class="content-section">
           	<h1>You do not have any products apploaded yet</h1>
-            <h3>You can add items <a href="{% url 'blogs:appload'%}">here</a>
+            <h3>You can add items <a href="{% url 'blogs:appload' %}">here</a>
           </div>
             
           {%endfor%}
