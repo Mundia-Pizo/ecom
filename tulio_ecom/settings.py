@@ -29,6 +29,9 @@ INSTALLED_APPS = [
     'imagekit',
     'django.contrib.sites',
 
+    # this is a posgresql plugin for searching
+    'django.contrib.postgres',
+    
    # this is the allauth apps requred
     'allauth',
     'allauth.account',
