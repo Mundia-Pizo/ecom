@@ -5,18 +5,22 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 from PIL import Image
 from django.db.models import Q
+from django.contrib.postgres.search import(
+SearchVector, 
+SearchQuery, 
+SearchRank)
 
 class ProductQuerySet(models.QuerySet):
 	def search(self, query=None):
 		qs = self
 		if query is not None:
-			or_lookup = (Q(title__icontains=query) | 
-                         Q(description__icontains=query)|
-                         Q(slug__icontains=query)|
-                         Q(category__icontains=query)
-                        )
-			qs = qs.filter(or_lookup).distinct() 
-		return qs
+			vector = SearchVector('title', weight='A') \
+			+ SearchVector('description', weight='C')\
+			+ SearchVector('slug', weight='B')
+			query =SearchQuery(query)
+			result=Item.objects.annotate(rank=SearchRank(vector, 
+				query)).filter(rank__gte=0.3).order_by('rank').order_by('-rank')
+		return result
 
 class ProductManager(models.Manager):
 	def get_queryset(self):

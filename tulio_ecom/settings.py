@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'tulio_ecom.wsgi.application'
 #     }
 # }
 
+# using postgres as the backend database
 
 DATABASES = {
     'default': {
