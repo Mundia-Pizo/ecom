@@ -15,8 +15,8 @@ class ProductQuerySet(models.QuerySet):
 		qs = self
 		if query is not None:
 			vector = SearchVector('title', weight='A') \
-			+ SearchVector('description', weight='C')\
-			+ SearchVector('slug', weight='B')
+			+ SearchVector('description', weight='B')\
+			+ SearchVector('slug', weight='C')
 			query =SearchQuery(query)
 			result=Item.objects.annotate(rank=SearchRank(vector, 
 				query)).filter(rank__gte=0.3).order_by('rank').order_by('-rank')
