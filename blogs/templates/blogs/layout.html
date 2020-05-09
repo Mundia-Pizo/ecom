@@ -47,7 +47,6 @@
 
   </style>
 
-<link rel="stylesheet" type="text/css" href="{% static "blogs/main.css" %}">
 
 	{% if title%}
 	<title>blog {{title}} </title>
@@ -62,21 +61,54 @@
 
   <!-- Navbar -->
   {%include 'blogs/nav.html'%}
-<main role="main" class=".container "> 
+<main role="main" class=""> 
 	<div class="row">
-		<div class="col-md center-content mb-6">
+		<div class="col-md-12 center-content mb-3">
       <div class="col-md-6 center-content pt-3" >
       {% if messages %}
-      {% for message in messages%}
-        <div class="alert alert-{{message.tags}} mt-3"><h4>{{message}}</h4></div>
-      {% endfor%}
+        {% for message in messages%}
+          <div class="alert alert-{{message.tags}} mt-2"><h4>{{message}}</h4></div>
+        {% endfor%}
       {% endif%}
       </div>
 			{% block content%} {% endblock%}
+
+      
+       {%if is_paginated%}
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          {%if page_obj.has_previous%}
+          <li class="page-item ">
+            <a class="page-link" href="?page={{page_obj.previous_page_number}}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {%endif%}
+          <li class="page-item active">
+            <a class="page-link" href="?page={{page_obj.number}}">{{page_obj.number}}
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          
+          {%if page_obj.has_next%}
+          <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.next_page_number}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {%endif%}
+        </ul>
+      </nav>
+      {%endif%}
+
+
 		</div>
 	</div>
-</main>
 
+</main>
 
 {%include 'blogs/footer.html'%}
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
