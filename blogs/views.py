@@ -75,62 +75,6 @@ class CheckoutView(LoginRequiredMixin, View):
 			messages.error(self.request, f"No active orders available")
 			return redirect(self.request, "blogs:order_summary")
 
-# class PaymentView(View):
-# 	def get(self, *args, **kwargs):
-# 		order = Order.objects.get(user=self.request.user, ordered=False)
-# 		context={'order':order}
-# 		return render(self.request, "blogs/payment_option.html", context)
-
-	# def post(self, *args, **kwargs):
-	# 	order = Order.objects.get(user=self.request.user, ordered=False)
-	# 	token = self.request.POST.get('stripe-token-handler')
-	# 	amount=int(order.get_total()*100)
-	# 	try:
-	# 		charge=stripe.Charge.create(
-	# 		amount=amount,
-	# 		currency="gbp",
-	# 		source="token", 
-	# 		)
-	# 		payement=Payment()
-	# 		payment.stripe_charge_id=charge['id']
-	# 		payment.user=self.request.user
-	# 		payment.amount =order.get_total()
-	# 		payment.save()
-
-			# order_item =order.items.all()
-			# order_item.update(ordered=True)
-			# order.ordered=True
-			# order.payment=payment
-			# order.save()
-
-	# 		messages.success("Your purchase was successfull")
-	# 		return redirect("/")
-
-		# except stripe.error.CardError as err:
-		# 	body = e.json_body
-		# 	err = body.get('error', {})
-		# 	messages.error(self.request, f"card eror") 
-		# except stripe.error.RateLimitError as err:
-		#   # Too many requests made to the API too quickly
-		#   messages.error(self.request, "Rate limit error") 
-		# except stripe.error.InvalidRequestError as err:
-		#   # Invalid parameters were supplied to Stripe's API
-		#   messages.error(self.request, f"") 
-		# except stripe.error.AuthenticationError as err:
-		#   # Authentication with Stripe's API failed
-		#   # (maybe you changed API keys recently)
-		#   messages.error(self.request, f"") 
-		# except stripe.error.APIConnectionError as err:
-		#   # Network communication with Stripe failed
-		#   messages.error(self.request, f"") 
-		# except stripe.error.StripeError as err:
-		#   # Display a very generic error to the user, and maybe send
-		#   # yourself an email
-		#   messages.error(self.request, f"") 
-		# except Exception as err:
-		#   # Something else happened, completely unrelated to Stripe
-		#   messages.error(self.request, f"") 
-		
  
 def products(request):
 	context={
@@ -239,6 +183,7 @@ class SearchView(ListView):
     template_name = 'blogs/search_items.html'
     paginate_by = 20
     count = 0
+    ordering ='-date'
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -252,21 +197,6 @@ class SearchView(ListView):
         
         if query is not None:
         	return Item.objects.search(query=query)
-            # product_results        = Item.objects.search(query)
-            # # lesson_results      = Lesson.objects.search(query)
-            # # profile_results     = Profile.objects.search(query)
-            
-            # # combine querysets 
-            # queryset_chain = chain(
-            #         product_results ,
-            #         # lesson_results,
-            #         # profile_results
-            # )        
-            # qs = sorted(queryset_chain, 
-            #             key=lambda instance: instance.pk, 
-            #             reverse=True)
-            # self.count = len(qs) # since qs is actually a list
-            # return qs
         return Item.objects.none() 
 
 class CategoryView(ListView):
@@ -295,6 +225,7 @@ class ItemAploadView(LoginRequiredMixin, CreateView):
 				'category','label','image',
 					'description']
 	template_name= 'blogs/aplaoditem.html'
+	success_url='/dashboard'
 
 	def form_valid(self, form):
 		form.instance.owner=self.request.user

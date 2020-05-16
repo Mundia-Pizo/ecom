@@ -1,7 +1,8 @@
 *{
-  margin: 0;
-  padding:0;
+  margin: 0px;
+  padding:0px;
 }
+
 body {
   background: #ffffff;
   color: #333333;
@@ -24,6 +25,9 @@ ul,li{
   
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
+}
+.footer-color{
+  background-color: #fafafa;
 }
 .drop_down{
   background-color: #e0e0e0;
@@ -52,7 +56,6 @@ h1, h2, h3, h4, h5, h6 {
 .product-style{
   width: 200px;
   height:200px;
-  padding-bottom: 10;
 }
 .product-space{
   padding-bottom: 10px;
@@ -78,7 +81,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;*/
   margin-bottom: 20px;
   /*margin-left: 40px;*/
-  margin-right: 40px;
   margin-top:40px
 }
 .payment-section {
@@ -88,7 +90,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;*/
   margin-bottom: 20px;
   /*margin-left: 40px;*/
-  margin-right: 40px;
   margin-top:30px
 }
 .order_summary_tag{
@@ -110,8 +111,8 @@ h1, h2, h3, h4, h5, h6 {
   background: #f5f5f5;
   padding:40px 40px;
   margin-bottom:10px;
-  margin-right:16px;
-  margin-left: 16px; 
+  /*margin-right:16px;
+  margin-left: 16px; */
   width: 200px;
   height: 250px;
 }
@@ -122,9 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 .bottom-tag{
   margin-left: 40px;
 }
-.home-tag{
-  margin-left: 60px;
-}
+
 .auth-tag{
   margin-left:auto;
   margin-right: auto;
@@ -156,7 +155,7 @@ a.article-title:hover {
 .article-img {
   height: 65px;
   width: 65px;
-  margin-right: 16px;
+  
 }
 .footer-links-brand{
   color: #000000;

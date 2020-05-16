@@ -8,13 +8,13 @@
           </h1>
       </a>
       <!-- Links -->
-  {%include 'blogs/search_bar.html'%}
+      {%include 'blogs/search_bar.html'%}
 
         <!-- Left -->
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
           <li>
-            <div class="navbar-nav">
+            <div class="navbar-nav row">
                   <li class="nav-item">
                       <a href="{%url 'blogs:order_summary'%}" class="nav-link waves-effect">
                         <span class="badge orange z-depth-1 mr-1"> {{request.user|cart_count}}</span>
@@ -22,13 +22,15 @@
                         <span class="clearfix d-none d-sm-inline-block text-warning"> Cart </span>
                       </a>
                   </li>
-                {%if request.user.is_authenticated%}
-                    <a class="nav-item nav-link blue-text" href="{%url 'blogs:dashboard'%}">My Tulio</a>
-                    <a class="nav-item nav-link blue-text" href="{%url 'account_logout' %}">Logout</a>
-                {%else%}
-                    <a class="nav-item nav-link blue-text" href="{%url 'account_login' %}">Login</a>
-                    <a class="nav-item nav-link blue-text" href="{%url 'account_signup'%}">Register</a>
-                {%endif%}
+                <div>
+                    {%if request.user.is_authenticated%}
+                        <a class="nav-item nav-link blue-text" href="{%url 'blogs:dashboard'%}">My Tulio</a>
+                        <a class="nav-item nav-link blue-text" href="{%url 'account_logout' %}">Logout</a>
+                    {%else%}
+                        <a class="nav-item nav-link blue-text" href="{%url 'account_login' %}">Login</a>
+                        <a class="nav-item nav-link blue-text" href="{%url 'account_signup'%}">Register</a>
+                    {%endif%}
+                </div>
             </div>
           </li>
         </ul>

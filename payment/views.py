@@ -59,6 +59,6 @@ def payment_process(request, *args, **kwargs):
 
 
 
-
-
-    
+@csrf_exempt
+def payment_momo_proces(request, *args, **kwargs):
+    pass 

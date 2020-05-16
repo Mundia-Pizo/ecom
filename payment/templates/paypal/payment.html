@@ -75,4 +75,50 @@
 </fieldset>
 </div>
 </main>
+
+
+
+<form>
+  <button type="button" style="cursor:pointer;" value="Pay Now" id="submit">Pay Now</button>
+</form>
+
+
+<script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+<script>
+     document.addEventListener("DOMContentLoaded", function(event) {
+  document.getElementById("submit").addEventListener("click", function(e) {
+    var PBFKey = "FLWPUBK_TEST-b95de48e62b7a5e93729f723d569fdb2-X";
+    
+    getpaidSetup({
+      PBFPubKey: PBFKey,
+      customer_email: "user@example.com",
+      customer_firstname: "Temi",
+      customer_lastname: "Adelewa",
+      custom_description: "Pay Internet",
+      custom_logo: "http://localhost/communique-3/skin/frontend/ultimo/communique/custom/images/logo.svg",
+      custom_title: "Communique Global System",
+      amount: {{order.get_total_and_shipping}},
+      customer_phone: "234099940409",
+      country: "ZM",
+      currency: "ZMW",
+      txref: "rave-783642",
+      integrity_hash: "6800d2dcbb7a91f5f9556e1b5820096d3d74ed4560343fc89b03a42701da46578",
+      onclose: function() {},
+      callback: function(response) {
+        var flw_ref = response.tx.flwRef; // collect flwRef returned and pass to a                  server page to complete status check.
+        console.log("This is the response returned after a charge", response);
+        if (
+          response.tx.chargeResponseCode == "00" ||
+          response.tx.chargeResponseCode == "0"
+        ) {
+          // redirect to a success page
+        } else {
+          // redirect to a failure page.
+        }
+      }
+    });
+  });
+});
+
+</script>
 {%endblock%}
