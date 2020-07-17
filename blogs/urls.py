@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import (products, 
 	 CheckoutView,
 	 HomeView, 
@@ -21,6 +21,7 @@ app_name = 'blogs'
 
 urlpatterns = [
 	path('', HomeView.as_view(), name ="home" ),
+	path('api/items', include('blogs.api_urls')),
 	path('checkout/', CheckoutView.as_view(), name = "checkout" ),
 	# path('payment_option/<payment_option>/', PaymentView.as_view(), name = "payment_option" ),
 	path('order_summary/', OrderSummaryView.as_view(), name = "order_summary" ),

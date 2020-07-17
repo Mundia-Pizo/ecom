@@ -11,8 +11,8 @@ from django.conf.urls.static import static
 
 """This is the main urls file for the whole website"""
 urlpatterns = [
-    path('', include('blogs.urls', namespace='blogs')),
     path('admin/', admin.site.urls),
+    path('', include('blogs.urls', namespace='blogs')),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('paypal_pay/', include('payment.urls', namespace='payment')),
     # path('register/', user_views.register, name='register'),

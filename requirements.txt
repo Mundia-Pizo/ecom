@@ -9,6 +9,7 @@ django-countries==6.1.2
 django-crispy-forms==1.9.0
 django-imagekit==4.0.2
 django-paypal==1.0.0
+djangorestframework==3.11.0
 idna==2.9
 oauthlib==3.1.0
 pilkit==2.0

@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'stripe',
     'imagekit',
     'django.contrib.sites',
+    #this is for the api 
+    'rest_framework',
 
     # this is a posgresql plugin for searching
     'django.contrib.postgres',
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     #here are the providers
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+
 
 ]
 
