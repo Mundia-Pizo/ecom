@@ -10,7 +10,7 @@ from django.views.generic import (
 	CreateView,
 	DeleteView,
 	UpdateView
-	)
+)
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
