@@ -1,33 +1,14 @@
 {%extends 'blogs/layout.html'%}
 {% block content%}
-<style type="text/css">
-  .img-responsive{
-    height: 350px;
-    width: auto;
-    object-position: center;
-    object-fit: cover;
-    margin-left: 100px;
-    margin-right: auto;
-  }
-  .product-space{
-    
-    margin-left: 125px;
-    margin-right: auto;
-  }
-</style>
-     <h2 class="pt-5 h2 text-center mb-1 product-space">{{item.title}}</h2>
-    <div class="container dark-grey-text mt-1 center-content">
-
-      <!--Grid row-->
-      <div class="">
-      <div class="container row wow fadeIn product-card">
-              <div class="col-md-6 mb-4">
-                <img src="{{item.image.url}}" class=" img-responsive card" alt="">
-              </div>
-        <!--Grid column-->
-        <!--Grid column-->
-        <div class="col-md-5 ">
-          <div class="p-4">
+      <div class="container-1">
+        <h2 >{{item.title}}</h2>
+      </div>
+      <div class="container-1">
+      <div class="container-1 product">
+        <div class="card">
+          <img src="{{item.image.url}}" class="card-image" alt="">
+        </div>
+          <div>
               <div class="mb-3">
                     <a href="">
                       <span class="badge purple mr-1">{{object.get_category_display}}</span>
@@ -63,61 +44,6 @@
 
         </div>
         <!--Grid column-->
-
-      </div>
-      </div>
-      <!--Grid row-->
-
-      <!--hr-->
-
-
+</div>
 
 {%endblock content%}
-      <!--Grid row-->
-      <!--div class="row d-flex justify-content-center wow fadeIn">
-
-       
-        <div class="col-md-6 text-center">
-
-          <h4 class="my-4 h4">Check out these deals</h4>
-
-          <p>Check out what best sellers have to offer for you this 
-          summer and winter related items </p>
-
-        </div>
-        
-
-      </div-->
-      <!--Grid row-->
-
-      <!--Grid row-->
-      <!--div class="row wow fadeIn">
-
-        
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-
-        </div>
-        
-
-       
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-        </div>
-        
-
-        
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-        </div>
-       
-
-      <--/div>
-      
-
-    <--/div>

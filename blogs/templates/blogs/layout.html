@@ -15,37 +15,9 @@
   <link href="{%static 'blogs/css/mdb.min.css'%}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="{%static 'blogs/css/style.min.css'%}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static "blogs/main.css" %}">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static "blogs/main.css" %}"> -->
+  <link rel="stylesheet" type="text/css" href="{% static "blogs/style.css" %}">
 
-    <!--style type="text/css">
-    html,
-    body,
-    header,
-    .carousel {
-      height: 60vh;
-    }
-
-    @media (max-width: 740px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-
-    @media (min-width: 800px) and (max-width: 850px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-
-  </style-->
 
 	{% if title%}
 	<title>blog {{title}} </title>
@@ -57,10 +29,8 @@
 <body>
 
 {%include 'blogs/nav.html'%}
-<main role="main" class=".container "> 
-	<div class="row">
-		<div class="col-md center-content mb-6">
-      <div class="col-md-6 center-content pt-3" >
+<main role="main" > 
+      <div  class="container-1">
       {% if messages %}
       {% for message in messages%}
         <div class="alert alert-{{message.tags}} mt-3"><h4>{{message}}</h4></div>
@@ -68,8 +38,6 @@
       {% endif%}
       </div>
 			{% block content%} {% endblock%}
-		</div>
-	</div>
 </main>
 
 <hr>

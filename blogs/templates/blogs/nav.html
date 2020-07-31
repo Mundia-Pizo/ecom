@@ -1,39 +1,31 @@
 {%load cart_item_count%}
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark mdb-color scrolling-navbar">
-    <div class="container">
+<nav>
+    <div class="container-1">
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="{%url 'blogs:home'%}">
-          <h1>
-             <strong class="white-text">tulio <em class="text-warning">ecom</em></strong>
-          </h1>
-      </a>
+            <a  href="{%url 'blogs:home'%}">
+                <h1>
+                  <strong class="white-text">tulio <em class="text-warning">ecom</em></strong>
+                </h1>
+            </a>
       <!-- Links -->
-      {%include 'blogs/search_bar.html'%}
+             {%include 'blogs/search_bar.html'%}
 
         <!-- Left -->
         <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          <li>
-            <div class="navbar-nav row">
-                  <li class="nav-item">
-                      <a href="{%url 'blogs:order_summary'%}" class="nav-link waves-effect">
-                        <span class="badge orange z-depth-1 mr-1"> {{request.user|cart_count}}</span>
-                          <i class="fas fa-shopping-cart text-warning"></i>
-                        <span class="clearfix d-none d-sm-inline-block text-warning"> Cart </span>
+                <div >
+                      <a href="{%url 'blogs:order_summary'%}">
+                           <h7> {{request.user|cart_count}}</h7>
+                            <i class="fas fa-shopping-cart "></i>
+                            <span class="text-warning"> Cart </span>
                       </a>
-                  </li>
-                <div>
                     {%if request.user.is_authenticated%}
                         <a class="nav-item nav-link blue-text" href="{%url 'blogs:dashboard'%}">My Tulio</a>
-                        <a class="nav-item nav-link blue-text" href="{%url 'account_logout' %}">Logout</a>
+                        <a class="nav-item nav-link " href="{%url 'account_logout' %}">Logout</a>
                     {%else%}
-                        <a class="nav-item nav-link blue-text" href="{%url 'account_login' %}">Login</a>
+                        <a class="nav-item nav-link " href="{%url 'account_login' %}">Login</a>
                         <a class="nav-item nav-link blue-text" href="{%url 'account_signup'%}">Register</a>
                     {%endif%}
-                </div>
-            </div>
-          </li>
-        </ul>
+               </div>
 
       </div>
 

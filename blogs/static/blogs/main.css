@@ -6,7 +6,6 @@
 body {
   background: #ffffff;
   color: #333333;
-  margin-top: 5rem;
 }
 .side-dashboard {
   background-color: #fafafa;
@@ -39,8 +38,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #B71C1C;
 }
 .no_results{
-  height: 500px;
-  width: 800px;
+  max-height: 500px;
+  max-width:600px ;
   background-color:#ffffff;
 
 }

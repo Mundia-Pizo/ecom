@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+Body{
+    background-color: #fafafa;
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding: 0 0 0 0;
+}
+ul, li {
+    list-style: none;
+}
+.container-1 , nav .container-1{
+    width: 80%;
+    display: flex;
+    margin:auto;
+    font-size: 16px;
+    font-weight: bold;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    align-items: flex-start;
+    align-content: center;
+    padding-bottom: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+.container-2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;;
+    justify-content: space-evenly;
+    
+}
+.container-1 .product{
+    width: 80%;
+    margin: auto;
+}
+.flex-column{
+    width: 80%;
+    display: flex;
+    margin:auto;
+    font-size: 16px;
+    font-weight: bold;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    align-items: flex-start;
+    align-content: center;
+    padding-bottom: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+nav{
+    background-color:#000051 ;
+    margin-top: 0;
+    padding: 20px 0 0 0 ;
+    color: white;
+    min-height: 80px;
+    max-height: fit-content;
+}
+
+nav .container-1 a h1{
+    color: white;
+}
+
+nav .container-1 a{
+    text-decoration: none;
+}
+
+nav .container-1{
+    justify-content: space-between;
+
+}
+
+nav .container-1 div a{
+    text-decoration: none;
+    padding: 0 10px;
+    color:orange;
+   
+}
+nav .container-1 div{
+    display: flex;
+}
+
+nav .container-1 ul li{
+    list-style: none;
+    flex-direction: row;
+    display: flex;
+}
+.card-1{
+    width: 20%;
+    min-width: 200px;
+    border: 1px lightgray solid;
+    margin: 0 10px 15px 10px;
+    align-content: center;
+    align-items: center;
+}
+.card-1 .card-image{
+    width: 100%;
+    height: 180px;
+}
+.card-1-2{
+    width: 80%;
+    height: 180px;
+    margin: auto;
+    border: 1px lightgray solid;
+    margin: 0 10px 30px 10px
+}
+.table-col{
+   padding:0 60px 0 60px;
+}
+.card-1 a{
+    margin: auto;
+}
+.card-body{
+    align-items: center;
+    margin: auto;
+    color: blue;
+    align-content: center;
+    padding: 0 20px 0 20px
+}
+.profile-image{
+    width: 40%;
+    border-radius: 50%;
+    margin: auto;
+    
+
+}
+.dash-profile{
+    margin: auto;
+    max-width: 250px;
+    padding:20px 20px 20px 20px;
+    background-color: powderblue;
+    justify-content: space-around;
+}
+
+@media(max-width:480px){
+    .container-1, nav .container-1{
+        width: 95%;
+    }
+    .card-1{
+        margin: 0 5px 10px 5px;
+    }
+}

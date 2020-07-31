@@ -2,41 +2,39 @@
 {% load class_name %}
 {% block content %}
 
-<div class='row title-row center-content col-md-8 pt-2'>
-    <div class='col-8 py-0'>
+<div class='container-1'>
+    <div class='flex-column'>
         <h3 class='my-0 py-0'>Results for <b>{{ query }}</b></h3>
     </div>
-    <hr>
 </div>
         
-<div class="center-content col-md-8 ">        
-{% for object in object_list %}
-    {% with object|class_name as klass %}
-      {% if klass == 'Item' %}
-           <div class='row mb-8 pt-5 mb-3'>
-            <div>
-              <a href='{{ object.get_absolute_url }}'>
-              <img  class="card image_style" src="{{object.image.url}}">
-              </a>
-            </div>
-             <div class='col-md-8 ml-4'>
+<div class="container-1">     
+      {% for object in object_list %}
+        {% with object|class_name as klass %}
+          {% if klass == 'Item' %}
+          <div class="container-1">
+              <div class="col-md-4 mr-10">
+                  <a href='{{ object.get_absolute_url }}'>
+                  <img  class="card-1" src="{{object.image.url}}">
+                  </a>
+              </div>
+              <div>
                 Found: <a href='{{ object.get_absolute_url }}'>{{ object.title }}</a>
-                       <p>{{ object.description }}</p>
-                       <h5 class="text-primary"><b>${{object.price}}</b></h5>
-                       <h5>Supplier: {{object.owner}}</h5>
-            </div>
+                      <p>{{ object.description }}</p>
+                      <h5 class="text-primary"><b>${{object.price}}</b></h5>
+                      <h5>Supplier: {{object.owner}}</h5>
+               </div>
+          </div>
+          {% endif %}
+         {% endwith %}
+          {% empty %}
+          <div class="container-1"> 
+              <h1>No results found for <b>{{query}}</b></h1>
+              <h6>Try using key words such as perfume, lady, Men's wear, baby's clothes/nappies toys, watches, suits etc</h6>
           </div>
           <hr>
+    {% endfor %}
 
-        {% endif %}
-        
-    {% endwith %}
-    
-{% empty %}
-<div class="no_results pt-5 ml-10 mr-10 center-content col-md-8 mb-10"> 
-<h1>No results found for <b>{{query}}</b></h1>
-<h6>Try using key words such as perfume, lady, Men's wear, baby's clothes/nappies toys, watches, suits etc</h6>
-</div>
-{% endfor %}
+</div>   
 {% endblock content %}
 </div>

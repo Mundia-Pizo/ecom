@@ -1,29 +1,28 @@
-{% extends "blogs/base.html" %}
+{% extends "blogs/layout.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<div class="content-section auth-tag col-md-6">
-	 <h1>
-     	<strong class="text-primary">tulio <em class="text-warning">ecom</em></strong>
-     </h1>
-  
-	<h1>{% trans "Sign Out" %}</h1>
+<div class="container-1">
+    <div class="container-1">
+		<h1>{% trans "Sign Out" %}</h1>
+	</div>
+    <div>
+		<h3>{% trans 'Are you sure you want to sign out?' %}</3>
 
-	<h3>{% trans 'Are you sure you want to sign out?' %}</3>
-
-	<form method="post" action="{% url 'account_logout' %}">
-	  {% csrf_token %}
-	  {% if redirect_field_value %}
-	  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-	  {% endif %}
-	  <div class="row">
-	  	<input class="btn btn-outline-danger mr-4 ml-4w" type="submit" value="{% trans 'Sign Out' %}"/>
-	  	<a class="btn btn-outline-success" href="{%url 'blogs:home'%}"/>cancel</a>
-	  </div>
-	</form>
+			<form method="post" action="{% url 'account_logout' %}">
+			{% csrf_token %}
+			{% if redirect_field_value %}
+			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+			{% endif %}
+			<div class="row">
+				<input class="btn btn-outline-danger mr-4 ml-4w" type="submit" value="{% trans 'Sign Out' %}"/>
+				<a class="btn btn-outline-success" href="{%url 'blogs:home'%}"/>cancel</a>
+			</div>
+		</form>
+    </div>
 </div>
 
 {% endblock %}
