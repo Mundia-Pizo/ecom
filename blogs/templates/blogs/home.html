@@ -16,15 +16,15 @@
                       </a>
                       <div class="card-body">
                             <h5>{{item.get_category_display}}</h5>
-                            <h6>
+                            <h7>
                                 <strong>
-                                    <a class="">{{item.title}}
+                                    <a class="dark-grey-text">{{item.title}}
                                       <span class="badge badge-pill {{item.get_label_display}}-color">NEW</span>
                                     </a>
                                 </strong>
-                            </h6>
+                            </h7>
 
-                            <h4 class="">
+                            <h4 class="font-weight-bold blue-text">
                                 <strong>$
                                     {% if item.discount_price %}
                                     {{item.discount_price}}

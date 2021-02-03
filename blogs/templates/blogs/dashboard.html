@@ -1,7 +1,7 @@
 {% extends 'blogs/layout.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-	{% include 'blogs/dashboard_side.html' %}
+	<!-- {% include 'blogs/dashboard_side.html' %} -->
 	<div class="container-1">
 		{% for item in items %}  
           <!--Grid column-->
@@ -10,7 +10,7 @@
 	              <!--Card image-->
 		              <div class="overlay product-card m-auto">
 		                <a href="{{item.get_absolute_url}}">
-		                <img src="{{item.image.url}}" class="img_style img-fluid img-responsive"
+		                <img src="{{item.image.url}}" class="card-image"
 		                  alt="">
 		                </a>
 		              </div>

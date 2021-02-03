@@ -2,7 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.environ.get('NEW_SECRET_KEY')
+SECRET_KEY = '_KEY=")7u%6+ztb_@lzm347k%q)pxy^he_um8mm!22lfs!#dqu-5lj77"'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,8 +93,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tulio_db',
-        'USER': 'stacy',
-        'PASSWORD': os.environ.get('DB_PASSWORD_TULIO'),
+        'USER': 'postgres',
+        'PASSWORD':'@stacy7725',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -147,6 +147,7 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK ='bootstrap4'
 
 LOGIN_REDIRECT_URL = reverse_lazy('blogs:home')
+LOGOUT_REDIRECT_URL = reverse_lazy('blogs:home')
 
 LOGIN_URL = 'account_login'
 STRIPE_SECRETE_KEY='sk_test_GdsaNmn32m78GqGGajfDc7jg003Lz1TgPA'
