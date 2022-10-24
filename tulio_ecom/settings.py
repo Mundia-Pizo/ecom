@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,21 +26,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_countries',
     'paypal.standard.ipn',
-    'stripe',
+    # 'stripe',
     'imagekit',
     'django.contrib.sites',
-    #this is for the api 
+    # this is for the api
     'rest_framework',
 
     # this is a posgresql plugin for searching
     'django.contrib.postgres',
-    
-   # this is the allauth apps requred
+
+    # this is the allauth apps requred
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
-    #here are the providers
+    # here are the providers
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 
@@ -92,9 +93,9 @@ WSGI_APPLICATION = 'tulio_ecom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tulio_db',
-        'USER': 'postgres',
-        'PASSWORD':'@stacy7725',
+        'NAME': 'mytulio',
+        'USER': 'tuliouser',
+        'PASSWORD': 'master77trudexz.',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -130,13 +131,12 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-from django.urls import reverse_lazy
 
 STATIC_URL = '/static/'
 
@@ -144,18 +144,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-CRISPY_TEMPLATE_PACK ='bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = reverse_lazy('blogs:home')
 LOGOUT_REDIRECT_URL = reverse_lazy('blogs:home')
 
 LOGIN_URL = 'account_login'
-STRIPE_SECRETE_KEY='sk_test_GdsaNmn32m78GqGGajfDc7jg003Lz1TgPA'
+STRIPE_SECRETE_KEY = 'sk_test_GdsaNmn32m78GqGGajfDc7jg003Lz1TgPA'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST   ='smtp.gmail.com'
-EMAIL_PORT =587
-EMAIL_USE_TLS =True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 """
 ======================================================================
@@ -169,7 +169,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('Your email password variable')
 EMAIL_HOST_USER = os.environ.get('_MY_EMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('_MY_EMAIL_PASS')
 
-PAYPAL_RECEIVER_EMAIL='sb-z7smm532234@business.example.com'
+PAYPAL_RECEIVER_EMAIL = 'sb-z7smm532234@business.example.com'
 PAYPAL_TEST = True
 
 AUTHENTICATION_BACKENDS = (
@@ -177,8 +177,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 
-    )
+)
 
-SITE_ID=1
+SITE_ID = 1
 
 """Paypal testing email sb-vt5dm531103@personal.example.com"""
